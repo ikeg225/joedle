@@ -8,6 +8,10 @@
   src: url(ClearSans-Medium.ttf);
 }
 
+* {
+  touch-action: manipulation;
+}
+
 html {
   background-color: #121213;
 }
