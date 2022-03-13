@@ -1,7 +1,7 @@
 import { WORD, WORDS6 } from "./words.js";
 import './tinycolor.js';
 
-const NUMBER_OF_GUESSES = 2;
+const NUMBER_OF_GUESSES = 6;
 const WORD_LENGTH = 6;
 const WORDS = WORDS6;
 let guessesRemaining = NUMBER_OF_GUESSES;
