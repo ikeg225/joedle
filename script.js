@@ -1,7 +1,7 @@
 import { WORD, WORDS6 } from "./words.js";
 import './tinycolor.js';
 
-const NUMBER_OF_GUESSES = 6;
+const NUMBER_OF_GUESSES = 2;
 const WORD_LENGTH = 6;
 const WORDS = WORDS6;
 let guessesRemaining = NUMBER_OF_GUESSES;
@@ -45,7 +45,7 @@ function shadeKeyBoard(letter, color) {
 }
 
 function deleteLetter () {
-    let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]
+    let row = document.getElementsByClassName("letter-row")[NUMBER_OF_GUESSES - guessesRemaining]
     let box = row.children[nextLetter - 1]
     box.textContent = ""
     box.classList.remove("filled-box")
@@ -54,7 +54,7 @@ function deleteLetter () {
 }
 
 function checkGuess () {
-    let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]
+    let row = document.getElementsByClassName("letter-row")[NUMBER_OF_GUESSES - guessesRemaining]
     let guessString = ''
     let rightGuess = Array.from(rightGuessString)
 
@@ -105,22 +105,29 @@ function checkGuess () {
             box.style.borderColor = letterColor
             shadeKeyBoard(letter, letterColor)
         }, delay)
-    }
 
-    if (guessString === rightGuessString) {
-        toastr.success("You guessed right! Game over!")
-        guessesRemaining = 0
-        return
-    } else {
-        guessesRemaining -= 1;
-        currentGuess = [];
-        nextLetter = 0;
+        if (i === (WORD_LENGTH - 1)) {
 
-        if (guessesRemaining === 0) {
-            toastr.error("You've run out of guesses! Game over!")
-            toastr.info(`The right word was: "${rightGuessString}"`)
         }
     }
+
+    setTimeout(() => {
+        if (guessString === rightGuessString) {
+            document.getElementById("popup").style.display = "block";
+            document.getElementsByClassName("popupBack")[0].classList = "popupBack active";
+            guessesRemaining = 0
+            return
+        } else {
+            guessesRemaining -= 1;
+            currentGuess = [];
+            nextLetter = 0;
+
+            if (guessesRemaining === 0) {
+                document.getElementById("popupSad").style.display = "block";
+                document.getElementsByClassName("popupBack")[0].classList = "popupBack active";
+            }
+        }
+    }, 250 * (WORD_LENGTH + 0.5));
 }
 
 function insertLetter (pressedKey) {
@@ -129,7 +136,7 @@ function insertLetter (pressedKey) {
     }
     pressedKey = pressedKey.toLowerCase()
 
-    let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]
+    let row = document.getElementsByClassName("letter-row")[NUMBER_OF_GUESSES - guessesRemaining]
     let box = row.children[nextLetter]
     animateCSS(box, "pulse")
     box.textContent = pressedKey
@@ -197,5 +204,11 @@ document.getElementById("keyboard-cont").addEventListener("click", (e) => {
 
     document.dispatchEvent(new KeyboardEvent("keyup", {'key': key}))
 })
+
+document.addEventListener('click', function(evt) {
+    if(evt.target.classList['value'] === 'popupLeft noSpace'){
+        document.getElementsByClassName("popupBack")[0].classList = "popupBack";
+    }
+});
 
 initBoard();

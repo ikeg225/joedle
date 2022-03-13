@@ -1,3 +1,3 @@
-# wordle_clone
+# Joedle
 
-A simple vanilla js clone of Wordle
+A Wordle clone but with customized words and word length.

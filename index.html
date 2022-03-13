@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
     <title>Wordle</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
@@ -15,9 +16,20 @@
 <body>
     <h1> Joedle </h1>
 
-    <div id="popup">
-        <h1>Congrats You Won!</h1>
-        <h2>Happy birthday Joseph. Hope you have/had a good one today. Below is your prize!</h2>
+    <div class="popupBack">
+        <div id="popup">
+            <h2 class="popupLeft noSpace">X</h2>
+            <h2>CONGRATS YOU DID IT!</h2>
+            <img src="./joseph.gif">
+            <h2 class="popupLeft">Happy birthday Joseph. Hope you have/had a good one today. Text (424) 903-6354 to claim your prize!</h2>
+        </div>
+
+        <div id="popupSad">
+            <h2 class="popupLeft noSpace">X</h2>
+            <h2>YOU FAILED!</h2>
+            <img src="./josephSad.gif">
+            <h2 class="popupLeft">No prize for you hahaha >:]</h2>
+        </div>
     </div>
     
     <div id="game-board">

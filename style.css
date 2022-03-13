@@ -12,6 +12,10 @@ html {
   background-color: #121213;
 }
 
+body {
+  margin: 0;
+}
+
 h1 {
   font-family: karnak;
   text-align: center;
@@ -84,21 +88,57 @@ h2 {
   color: white;
 }
 
-#popup {
+.popupBack {
   position: absolute;
-  width: 500px;
+  height: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.popupBack.active {
+  transition: 1s;
+  visibility: visible;
+  opacity: 100%;
+}
+
+#popup, #popupSad {
+  z-index: 1000;
+  max-width: 500px;
+  width: 70%;
+  height: auto;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-  background-color: white;
+  background-color: #121213;
+  color: white;
+  text-align: center;
   display: none;
 }
 
-#popup h1 {
-  color: #538d4e;
+#popup img {
+  width: 80%;
 }
 
-@media screen and (max-width: 425px) {
+#popupSad img {
+  width: 80%;
+}
+
+.popupLeft {
+  text-align: left;
+}
+
+.noSpace {
+  margin: 0;
+  padding: 0;
+  width: 0%;
+}
+
+@media screen and (max-width: 768px) {
   .keyboard-button {
     padding: 0.6rem;
   }
@@ -112,6 +152,14 @@ h2 {
 
   h1 {
     font-size: 40px;
+  }
+
+  #popup h2 {
+    font-size: 18px;
+  }
+
+  #popupSad h2 {
+    font-size: 18px;
   }
 }
 
