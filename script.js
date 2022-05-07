@@ -7,7 +7,7 @@ const WORDS = WORDS6;
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
-let rightGuessString = WORD[Math.floor(Math.random() * WORD.length)]
+let rightGuessString = WORD;
 
 function initBoard() {
     let board = document.getElementById("game-board");
